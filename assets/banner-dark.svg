@@ -1,0 +1,11 @@
+# (paste dark SVG, save)
+nano assets/banner-light.svg
+# (paste light SVG, save)
+
+nano index.html
+# (paste the landing page, save)
+
+git add assets/banner-*.svg index.html README.md
+git commit -m "Branding: dark/light banner + dark-mode landing page + OG meta"
+git push
+

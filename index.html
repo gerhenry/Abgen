@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Abgen — Analog Layout Abstract Generation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Abgen is an open-source flow for generating IC layout abstracts programmatically — modular, scriptable, and EDA-friendly.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Abgen — Analog Layout Abstract Generation">
+<meta property="og:description" content="Open-source abstract generation for analog & mixed-signal layout.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://raw.githubusercontent.com/gerhenry/Abgen/main/assets/banner-light.svg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abgen — Analog Layout Abstract Generation">
+<meta name="twitter:description" content="Open-source abstract generation for analog & mixed-signal layout.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gerhenry/Abgen/main/assets/banner-light.svg">
+
+<link rel="icon" href="favicon.ico">
+<style>
+  :root{
+    --bg:#0b1220; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --accent:#60a5fa;
+    --btn:#2563eb; --btnText:#fff; --ring:#60a5fa33;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#ffffff; --card:#f8fafc; --text:#0f172a; --muted:#475569; --accent:#2563eb;
+      --btn:#1d4ed8; --btnText:#fff; --ring:#2563eb22;
+    }
+  }
+  *,*:before,*:after{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  .wrap{max-width:960px;margin:0 auto;padding:28px}
+  .hero{border-radius:16px;background:var(--card);padding:28px;margin-top:18px;box-shadow:0 10px 30px var(--ring)}
+  .title{font-size:42px;font-weight:800;margin:6px 0 10px}
+  .lead{font-size:20px;color:var(--muted);max-width:52ch}
+  .row{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+  .btn{display:inline-block;background:var(--btn);color:var(--btnText);padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600}
+  .btn.secondary{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+  .section{margin-top:28px;padding:22px;border-radius:14px;background:var(--card)}
+  .footer{color:var(--muted);font-size:14px;margin:28px 0}
+  .toggle{float:right;border:1px solid var(--accent);border-radius:999px;padding:6px 10px;cursor:pointer;color:var(--accent)}
+  img.banner{width:100%;height:auto;border-radius:12px;margin-top:10px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="toggle" id="themeToggle">🌓 Theme</div>
+    <div class="hero">
+      <img class="banner" src="assets/banner-light.svg" alt="Abgen banner" id="banner">
+      <div class="title">Abgen</div>
+      <p class="lead">Open-source abstract generation for analog & mixed-signal IC layout — modular, scriptable, and EDA-friendly.</p>
+      <div class="row">
+        <a class="btn" href="https://github.com/gerhenry/Abgen">View on GitHub</a>
+        <a class="btn secondary" href="https://substack.com/@synapticsilicon">Read updates on Substack</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>What it is</h3>
+      <p>Abgen turns layout metadata into fast, portable <em>abstracts</em> suitable for floorplanning and chip-assembly flows. It’s designed to integrate with custom design environments and batch automation.</p>
+    </div>
+
+    <div class="section">
+      <h3>Key features</h3>
+      <ul>
+        <li>Scriptable flow (shell + config) for repeatable abstract builds</li>
+        <li>Versioned outputs for design-database stability</li>
+        <li>CI-friendly: run in headless environments</li>
+        <li>Works across processes and geometries</li>
+      </ul>
+    </div>
+
+    <p class="footer">© 2025 Gerald Henry — MIT licensed.</p>
+  </div>
+<script>
+  // simple theme switch (swaps banner too)
+  const t = document.getElementById('themeToggle');
+  const b = document.getElementById('banner');
+  function set(mode){
+    document.documentElement.style.colorScheme = mode;
+    b.src = mode === 'dark' ? 'assets/banner-dark.svg' : 'assets/banner-light.svg';
+    localStorage.setItem('abgen-theme', mode);
+  }
+  const saved = localStorage.getItem('abgen-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  set(saved || (prefersDark ? 'dark' : 'light'));
+  t.onclick = ()=> set(document.documentElement.style.colorScheme === 'dark' ? 'light' : 'dark');
+</script>
+</body>
+</html>
