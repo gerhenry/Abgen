@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gerhenry.github.io/Abgen/sitemap.xml
