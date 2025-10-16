@@ -1,0 +1,9 @@
+# Example Abgen configuration
+layout_name: example_block
+boundary_x: 1000
+boundary_y: 800
+pin_map:
+  - name: VIN
+    layer: M2
+  - name: VOUT
+    layer: M2
